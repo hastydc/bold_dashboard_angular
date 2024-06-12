@@ -1,0 +1,14 @@
+@import 'colors';
+
+:root {
+  --color-blue: #{$colorBlue};
+  --color-red: #{$colorRed};
+  --color-gray-dark: #{$colorGrayDark};
+  --color-gray-light: #{$colorGrayLight};
+  --color-bg: #{$colorBg};
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
