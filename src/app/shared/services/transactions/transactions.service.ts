@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { currentDate, transactions } from '@app/api/data';
-import { PaymentType } from '@app/models/paymentType.enum';
+import { PaymentBaseFilter, PaymentType } from '@app/models/paymentType.enum';
 import { Transaction } from '@app/models/transaction.interface';
 import { TransactionData } from '@app/models/transactionData.interface';
 import { TransactionDate } from '@app/models/transactionDate.enum';
@@ -162,7 +162,7 @@ export class TransactionsService {
   private _getPaymentMethods() {
     return JSON.parse(
       localStorage.getItem(TransactionKey.PAYMENT_METHODS) ??
-        `["${PaymentType.DATAPHONE}","${PaymentType.LINK}"]`
+        `["${PaymentType.DATAPHONE}","${PaymentType.LINK}","${PaymentBaseFilter.ALL}"]`
     );
   }
 
