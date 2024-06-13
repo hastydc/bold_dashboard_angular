@@ -69,7 +69,7 @@ export class TransactionsService {
   }
 
   private _filterByToday(): void {
-    const list = this.data().transactions!;
+    const list = transactions;
 
     this._setData({
       ...this.data(),
@@ -83,7 +83,7 @@ export class TransactionsService {
   }
 
   private _filterByWeek(): void {
-    const list = this.data().transactions;
+    const list = transactions;
 
     this._setData({
       ...this.data(),
@@ -99,7 +99,7 @@ export class TransactionsService {
   }
 
   private _filterByMonth(): void {
-    const list = this.data().transactions;
+    const list = transactions;
 
     this._setData({
       ...this.data(),

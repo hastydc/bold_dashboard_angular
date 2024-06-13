@@ -1,5 +1,4 @@
 import { Component, effect, inject } from '@angular/core';
-import { Transaction } from '@app/models/transaction.interface';
 import { TransactionData } from '@app/models/transactionData.interface';
 import { CardPriceComponent } from '@app/shared/components/card-price/card-price.component';
 import { DateSelectorComponent } from '@app/shared/components/date-selector/date-selector.component';

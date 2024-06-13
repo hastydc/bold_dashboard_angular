@@ -2,9 +2,6 @@
 @import 'functions';
 @import 'vars';
 
-.table__mobile {
-}
-
 .table__desktop {
   width: 100%;
 
@@ -17,6 +14,7 @@
   background-color: var(--color-gray-light);
   border-radius: rem(16);
   overflow: hidden;
+  box-shadow: $boxShadow;
 
   &--blue {
     color: var(--color-blue);
