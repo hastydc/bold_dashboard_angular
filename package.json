@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --base-href=/bold-dashboard/",
+    "build": "ng build",
+    "build-base": "ng build --base-href=/bold-dashboard/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "prettier": "prettier ./src --write"

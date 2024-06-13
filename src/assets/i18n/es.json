@@ -27,5 +27,7 @@
   "seeAll": "Ver todos",
   "apply": "Aplicar",
   "transactionsNotFound": "No se encontraron transacciones",
-  "totalSales": "Ventas totales"
+  "totalSales": "Ventas totales",
+  "seeMore": "Ver más",
+  "seeLess": "Ver menos"
 }
