@@ -13,8 +13,12 @@
         'totalSales' + transactionData.dateFilter
           | translate : { month: transactionData.monthName }
       "
-      >i</i
     >
+      <span class="info__icon">i</span>
+      <span class="info__text info__text--left">{{
+        'totalSales' | translate
+      }}</span>
+    </i>
   </div>
 
   <div class="card-price__content">

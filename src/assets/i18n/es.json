@@ -26,5 +26,6 @@
   "linkPayment": "Cobro con link de pago",
   "seeAll": "Ver todos",
   "apply": "Aplicar",
-  "transactionsNotFound": "No se encontraron transacciones"
+  "transactionsNotFound": "No se encontraron transacciones",
+  "totalSales": "Ventas totales"
 }
