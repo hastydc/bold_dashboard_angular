@@ -9,6 +9,7 @@ import { TransactionIconPipe } from '@app/shared/pipes/transaction-icon/transact
 import { TranslateModule } from '@ngx-translate/core';
 import { TableMobileComponent } from './components/table-mobile/table-mobile.component';
 import { TableDesktopComponent } from './components/table-desktop/table-desktop.component';
+import { TransactionData } from '@app/models/transactionData.interface';
 
 @Component({
   selector: 'app-table',
@@ -25,9 +26,8 @@ import { TableDesktopComponent } from './components/table-desktop/table-desktop.
   templateUrl: './table.component.html',
 })
 export class TableComponent {
-  @Input() transactions: Transaction[] = [];
-  @Input() tableHeaders: string[] = tableHeaders;
-  @Input() dateType: string = 'Today';
+  @Input() transactionData!: TransactionData;
 
+  tableHeaders: string[] = tableHeaders;
   transactionStatus = TransactionStatus;
 }
