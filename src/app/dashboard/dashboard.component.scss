@@ -1,0 +1,22 @@
+@import 'mixins';
+@import 'functions';
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: rem(16);
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    column-gap: rem(32);
+    row-gap: rem(16);
+
+    @include media(tablet) {
+      flex-wrap: wrap;
+      flex-direction: row;
+    }
+  }
+}

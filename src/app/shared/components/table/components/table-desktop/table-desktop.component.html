@@ -1,0 +1,83 @@
+<div class="table">
+  <table class="table__desktop desktop" [cellSpacing]="0" [cellPadding]="0">
+    <thead>
+      <tr>
+        <th class="table__th table__th--head" [colSpan]="5">
+          {{ 'yourSales' + dateType | translate }}
+        </th>
+      </tr>
+
+      <tr>
+        @for (header of tableHeaders; track header) {
+        <th class="table__th">{{ header | translate }}</th>
+        }
+      </tr>
+    </thead>
+
+    <tbody>
+      @for (transaction of transactions; track transaction.id) {
+      <tr>
+        <td
+          class="td"
+          [ngClass]="{
+            'td--border-blue': transaction.status === transactionStatus.SUCCESS,
+            'td--border-gray': transaction.status === transactionStatus.FAILED,
+          }"
+        >
+          <div class="td__content table--blue">
+            <img
+              class="td__icon"
+              [src]="transaction.paymentType.toString() | transactionIcon"
+            />
+            <span class="td__status">{{ transaction.status | translate }}</span>
+          </div>
+        </td>
+
+        <td class="td">
+          <div class="td__content table--gray">
+            {{ transaction.createdAt | date : 'dd/MM/yyyy - HH:mm:ss' }}
+          </div>
+        </td>
+
+        <td class="td">
+          <div class="td__content table--gray">
+            <img
+              class="td__icon-card"
+              [src]="transaction.cardNumber.toString() | cardIcon"
+            />
+            <span>
+              {{ transaction.cardNumber | cardNumber }}
+            </span>
+          </div>
+        </td>
+
+        <td class="td">
+          <div class="td__content table--gray">
+            {{ transaction.id | uppercase }}
+          </div>
+        </td>
+
+        <td class="td">
+          <div class="td__content table--blue td__content--col">
+            <div class="td__amount">
+              {{ transaction.amount | currency : '$' : 'symbol' : '1.0-0' }}
+            </div>
+
+            @if (transaction.status === transactionStatus.SUCCESS) {
+            <div class="td__deduction-label table--gray">
+              {{ 'boldDeduction' | translate }}
+            </div>
+
+            <div class="td__deduction-amount table--red">
+              -
+              {{ transaction.deduction | currency : '$' : 'symbol' : '1.0-0' }}
+            </div>
+            }
+          </div>
+        </td>
+      </tr>
+
+      }
+    </tbody>
+  </table>
+</div>

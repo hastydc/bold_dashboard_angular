@@ -1,6 +1,7 @@
 @import 'vars';
 @import 'fonts';
 @import 'functions';
+@import 'mixins';
 
 :root {
   --color-blue: #{$colorBlue};
@@ -31,4 +32,18 @@ body {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.mobile {
+  @include media(tablet) {
+    display: none;
+  }
+}
+
+.desktop {
+  display: none;
+
+  @include media(tablet) {
+    display: flex;
+  }
 }
