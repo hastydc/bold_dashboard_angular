@@ -6,6 +6,6 @@ export interface TransactionData {
   transactions: Transaction[];
   totalSales: number;
   dateFilter: TransactionDate;
+  paymentTypes?: PaymentType[];
   monthName?: string;
-  paymentTypeFilter?: PaymentType;
 }

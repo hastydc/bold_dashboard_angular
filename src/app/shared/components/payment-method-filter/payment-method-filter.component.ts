@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, OnChanges, inject } from '@angular/core';
 import { CdkListbox, CdkOption } from '@angular/cdk/listbox';
 import { TransactionData } from '@app/models/transactionData.interface';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './payment-method-filter.component.html',
   styleUrl: './payment-method-filter.component.scss',
 })
-export class PaymentMethodFilterComponent {
+export class PaymentMethodFilterComponent implements OnChanges {
   @Input() transactionData!: TransactionData;
 
   private readonly transactionsService = inject(TransactionsService);
@@ -23,12 +23,18 @@ export class PaymentMethodFilterComponent {
   selecteds: any[] = [];
   showList: boolean = false;
 
+  ngOnChanges(): void {
+    this.selecteds = this.transactionData?.paymentTypes ?? [];
+  }
+
   toggleList(): void {
     this.showList = !this.showList;
   }
 
   onSelect(event: any): void {
-    const value = event.value;
+    const value = event.value.filter(
+      (option: string) => option !== this.optionAll
+    );
     const isAllOption = event.option.value === PaymentBaseFilter.ALL;
 
     if (isAllOption) {
@@ -45,13 +51,17 @@ export class PaymentMethodFilterComponent {
       return;
     }
 
-    this.seeAll = false;
-    this.selecteds = value.filter(
-      (value: string) => value != PaymentBaseFilter.ALL
-    );
+    if (value.length == this.options.length) {
+      this.selecteds = [...value, this.optionAll];
+      this.seeAll = true;
+    } else {
+      this.selecteds = [...value];
+      this.seeAll = false;
+    }
   }
 
   filter(): void {
     this.transactionsService.filterByPayment(this.selecteds);
+    this.showList = false;
   }
 }
