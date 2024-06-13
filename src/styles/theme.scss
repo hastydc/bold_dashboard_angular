@@ -1,5 +1,6 @@
 @import 'vars';
 @import 'fonts';
+@import 'functions';
 
 :root {
   --color-blue: #{$colorBlue};
@@ -7,6 +8,7 @@
   --color-gray-dark: #{$colorGrayDark};
   --color-gray-light: #{$colorGrayLight};
   --color-bg: #{$colorBg};
+  --color-gradient: #{$colorGradient};
   --font-regular: #{$fontRegular};
   --font-semibold: #{$fontSemibold};
   --font-bold: #{$fontBold};
@@ -16,4 +18,17 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--font-regular);
+  background-color: var(--color-bg);
+}
+
+.info {
+  border-radius: 100%;
+  border: rem(1) solid var(--color-gray-light);
+  width: rem(14);
+  height: rem(14);
+  display: flex;
+  font-size: rem(10);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }

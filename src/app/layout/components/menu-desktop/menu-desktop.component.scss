@@ -1,0 +1,16 @@
+@import 'functions';
+
+.menu-desktop {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  gap: rem(32);
+
+  &__link {
+    text-decoration: none;
+    color: var(--color-gray-light);
+    display: flex;
+    align-items: center;
+    gap: rem(8);
+  }
+}

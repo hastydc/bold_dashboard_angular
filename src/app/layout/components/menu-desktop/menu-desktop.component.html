@@ -1,0 +1,20 @@
+<nav class="menu-desktop">
+  @for (item of menuItems; track item.label) {
+  <a
+    class="menu-desktop__link"
+    [routerLink]="item.link"
+    [attr.aria-label]="item.label | translate"
+  >
+    <span class="menu-desktop__link-label">
+      {{ item.label | translate }}
+    </span>
+    @if (item.info) {
+    <i
+      class="menu-desktop__info info"
+      [attr.aria-label]="item.label | translate"
+      >?</i
+    >
+    }
+  </a>
+  }
+</nav>

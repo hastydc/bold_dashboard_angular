@@ -1,0 +1,45 @@
+@import 'functions';
+@import 'mixins';
+
+.header {
+  background: var(--color-gradient);
+  width: 100%;
+  display: flex;
+  height: rem(64);
+  box-sizing: border-box;
+  padding: rem(16) rem(32);
+  position: relative;
+  z-index: 10;
+
+  @include media(tablet) {
+    height: rem(128);
+    padding: rem(32) rem(64);
+  }
+
+  &__menu {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &__menu-icon {
+    @include media(tablet) {
+      display: none;
+    }
+  }
+
+  &__menu-desktop {
+    display: none;
+
+    @include media(tablet) {
+      display: flex;
+    }
+  }
+}
+
+.menu-mobile {
+  @include media(tablet) {
+    display: none;
+  }
+}
