@@ -46,6 +46,7 @@ export class TransactionsService {
 
     this._setData({ ...this.data(), dateFilter: date, monthName });
     this._filterByDate(date);
+    this._setTotal();
   }
 
   private _setData(data: TransactionData): void {
@@ -109,6 +110,19 @@ export class TransactionsService {
 
         return base.getMonth() === current.getMonth();
       }),
+    });
+  }
+
+  private _setTotal(): void {
+    const list = this.data().transactions;
+    const totalSales = list.reduce(
+      (accumulator, current) => accumulator + current.amount,
+      0
+    );
+
+    this._setData({
+      ...this.data(),
+      totalSales,
     });
   }
 }

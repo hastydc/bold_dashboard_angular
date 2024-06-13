@@ -7,7 +7,7 @@ $colorGrayDark: #606060;
 $colorGrayLight: #f3f3f3;
 $colorBg: #f6f4f9;
 $colorGradient: linear-gradient(270deg, $colorRed -50%, $colorBlue 50%);
-$colorGradientRed: linear-gradient(270deg, $colorRed 50%, $colorBlue -50%);
+$colorGradientRed: linear-gradient(270deg, $colorRed -50%, $colorBlue 150%);
 
 /** Fonts */
 $fontRegular: 'Font Monserrat Regular';

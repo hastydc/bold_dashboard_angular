@@ -1,14 +1,14 @@
 @if (transactionData) {
-<div>
-  <div>
-    <span>
+<article class="card-price">
+  <div class="card-price__header">
+    <span class="card-price__title">
       {{
         'totalSales' + transactionData.dateFilter
           | translate : { month: transactionData.monthName }
       }}
     </span>
     <i
-      class="info"
+      class="card-price__info info"
       [attr.aria-label]="
         'totalSales' + transactionData.dateFilter
           | translate : { month: transactionData.monthName }
@@ -16,5 +16,17 @@
       >i</i
     >
   </div>
-</div>
+
+  <div class="card-price__content">
+    <div class="card-price__value">
+      {{ transactionData.totalSales | currency : '$' : 'symbol' : '1.0-0' }}
+    </div>
+
+    @if(transactionData.dateFilter === dateOption.TODAY) {
+    <div class="card-price__date">
+      {{ monthName | translate }} {{ dayName }}
+    </div>
+    }
+  </div>
+</article>
 }
