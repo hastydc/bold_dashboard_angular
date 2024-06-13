@@ -64,6 +64,11 @@
     color: var(--color-blue);
     font-family: var(--font-semibold);
     box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: rem(8);
+    align-items: center;
   }
 
   &__btn {
@@ -88,9 +93,29 @@
     }
   }
 
-  &__cb {
+  &__checkbox {
     width: rem(16);
     height: rem(16);
-    accent-color: var(--color-blue);
+    display: flex;
+    border: rem(1) solid var(--color-gray-dark);
+    border-radius: rem(2);
+    box-sizing: border-box;
+    padding: rem(2);
+
+    &::after {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-blue);
+      content: ' ';
+      opacity: 0;
+      transition: 0.5s ease-in-out;
+    }
+
+    &--checked {
+      &::after {
+        opacity: 1;
+      }
+    }
   }
 }

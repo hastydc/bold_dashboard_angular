@@ -21,15 +21,16 @@
   >
     @for (option of options; track option) {
     <li
-      [cdkOption]="option"
       class="payment-filter__option"
       [attr.aria-label]="option | translate"
+      [cdkOption]="option"
     >
-      <input
-        type="checkbox"
-        class="payment-filter__cb"
-        [checked]="selecteds.includes(option)"
-      />
+      <i
+        class="payment-filter__checkbox"
+        [ngClass]="{
+          'payment-filter__checkbox--checked': selecteds.includes(option)
+        }"
+      ></i>
 
       <span>
         {{ option | translate }}
@@ -42,7 +43,12 @@
       class="payment-filter__option"
       [attr.aria-label]="'seeAll' | translate"
     >
-      <input type="checkbox" class="payment-filter__cb" [checked]="seeAll" />
+      <i
+        class="payment-filter__checkbox"
+        [ngClass]="{
+          'payment-filter__checkbox--checked': selecteds.includes(optionAll)
+        }"
+      ></i>
 
       <span>
         {{ optionAll | translate }}

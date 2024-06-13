@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  SimpleChanges,
-  inject,
-} from '@angular/core';
+import { Component, Input, OnChanges, inject } from '@angular/core';
 import { CdkListbox, CdkOption } from '@angular/cdk/listbox';
 import { TransactionData } from '@app/models/transactionData.interface';
 import { TranslateModule } from '@ngx-translate/core';
@@ -29,7 +23,7 @@ export class PaymentMethodFilterComponent implements OnChanges {
   selecteds: any[] = [];
   showList: boolean = false;
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.selecteds = this.transactionData?.paymentTypes ?? [];
   }
 
@@ -38,7 +32,9 @@ export class PaymentMethodFilterComponent implements OnChanges {
   }
 
   onSelect(event: any): void {
-    const value = event.value;
+    const value = event.value.filter(
+      (option: string) => option !== this.optionAll
+    );
     const isAllOption = event.option.value === PaymentBaseFilter.ALL;
 
     if (isAllOption) {
@@ -55,10 +51,13 @@ export class PaymentMethodFilterComponent implements OnChanges {
       return;
     }
 
-    this.seeAll = false;
-    this.selecteds = value.filter(
-      (value: string) => value != PaymentBaseFilter.ALL
-    );
+    if (value.length == this.options.length) {
+      this.selecteds = [...value, this.optionAll];
+      this.seeAll = true;
+    } else {
+      this.selecteds = [...value];
+      this.seeAll = false;
+    }
   }
 
   filter(): void {
