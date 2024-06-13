@@ -1,0 +1,26 @@
+<header class="header">
+  <div class="header__logo">
+    <app-logo />
+  </div>
+
+  <div class="header__menu">
+    <div
+      class="header__menu-icon"
+      [attr.aria-label]="'showOrHideMenu' | translate"
+    >
+      <app-menu-icon [active]="showMenu" (actionToggleMenu)="toggleMenu()" />
+    </div>
+
+    <div class="header__menu-desktop">
+      <app-menu-desktop [menuItems]="menuItems" />
+    </div>
+  </div>
+</header>
+
+<div class="menu-mobile">
+  <app-menu-mobile
+    [active]="showMenu"
+    [menuItems]="menuItems"
+    (actionToggleMenu)="toggleMenu()"
+  />
+</div>

@@ -1,3 +1,7 @@
 {
-  "hi": "Hola"
+  "bold": "Bold",
+  "mainContent": "Contenido principal",
+  "showOrHideMenu": "Mostrar u ocultar el menu",
+  "myBusiness": "Mi negocio",
+  "help": "Ayuda"
 }

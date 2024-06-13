@@ -1,0 +1,8 @@
+<div class="menu-icon" (click)="toggleMenu()">
+  @for (item of [1,2,3]; track item) {
+  <span
+    class="menu-icon__line"
+    [ngClass]="{ 'menu-icon__line--active': active }"
+  ></span>
+  }
+</div>

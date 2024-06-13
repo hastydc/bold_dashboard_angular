@@ -1,0 +1,14 @@
+<nav class="menu-mobile" [ngClass]="{ 'menu-mobile--active': active }">
+  <ul class="menu-mobile__list">
+    @for (item of menuItems; track item.label) {
+    <li class="menu-mobile__item">
+      <a
+        class="menu-mobile__link"
+        [routerLink]="item.link"
+        (click)="toggleMenu()"
+        >{{ item.label | translate }}</a
+      >
+    </li>
+    }
+  </ul>
+</nav>
