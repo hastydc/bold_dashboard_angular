@@ -1,9 +1,12 @@
+$baseHref: '';
+// $baseHref: '/bold-dashboard';
+
 @function rem($value) {
   $remValue: calc($value / 16) + rem;
   @return $remValue;
 }
 
 @function getFontPath($type, $ext) {
-  @return '/assets/fonts/monserrat/' + $type + '/Montserrat-' + $type + '.' +
-    $ext;
+  @return $baseHref + '/assets/fonts/monserrat/' + $type + '/Montserrat-' +
+    $type + '.' + $ext;
 }

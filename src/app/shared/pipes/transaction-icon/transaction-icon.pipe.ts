@@ -17,6 +17,6 @@ export class TransactionIconPipe implements PipeTransform {
   }
 
   private getIconUrl(value: string): string {
-    return `/assets/icons/${this._fileName[value]}.svg`;
+    return `./assets/icons/${this._fileName[value]}.svg`;
   }
 }
