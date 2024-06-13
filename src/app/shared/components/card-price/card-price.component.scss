@@ -53,7 +53,10 @@
   &__value {
     font-size: rem(32);
     font-family: var(--font-bold);
-    color: var(--color-red);
+    background: var(--color-gradient-red);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
     @include media(tablet) {
       font-size: rem(48);
