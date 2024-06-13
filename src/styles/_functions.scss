@@ -2,3 +2,8 @@
   $remValue: calc($value / 16) + rem;
   @return $remValue;
 }
+
+@function getFontPath($type, $ext) {
+  @return '/assets/fonts/monserrat/' + $type + '/Montserrat-' + $type + '.' +
+    $ext;
+}

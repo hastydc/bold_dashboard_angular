@@ -1,0 +1,20 @@
+@import 'functions';
+@import 'vars';
+
+$fonts: (
+  'regular': $fontRegular,
+  'semibold': $fontSemibold,
+  'bold': $fontBold,
+);
+
+@each $type, $name in $fonts {
+  @font-face {
+    font-family: $name;
+    src: url(getFontPath($type, '.eot') + '.eot');
+    src: url(getFontPath($type, 'woff')) format ('woff'),
+      url(getFontPath($type, 'woff2')) format('woff2'),
+      url(getFontPath($type, 'ttf')) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
