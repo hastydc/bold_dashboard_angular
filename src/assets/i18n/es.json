@@ -25,5 +25,6 @@
   "dataphonePayment": "Cobro con datáfono",
   "linkPayment": "Cobro con link de pago",
   "seeAll": "Ver todos",
-  "apply": "Aplicar"
+  "apply": "Aplicar",
+  "transactionsNotFound": "No se encontraron transacciones"
 }

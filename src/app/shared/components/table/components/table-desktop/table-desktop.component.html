@@ -18,7 +18,14 @@
     </thead>
 
     <tbody>
-      @for (transaction of transactionData.transactions; track transaction.id) {
+      @if (!transactionData.transactions.length) {
+      <tr>
+        <td class="td" [colSpan]="5">
+          {{ 'transactionsNotFound' | translate }}.
+        </td>
+      </tr>
+      } @if (transactionData.transactions.length) { @for (transaction of
+      transactionData.transactions; track transaction.id) {
       <tr>
         <td
           class="td"
@@ -79,8 +86,7 @@
           </div>
         </td>
       </tr>
-
-      }
+      } }
     </tbody>
   </table>
 </div>
