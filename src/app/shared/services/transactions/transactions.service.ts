@@ -4,6 +4,7 @@ import { PaymentType } from '@app/models/paymentType.enum';
 import { Transaction } from '@app/models/transaction.interface';
 import { TransactionData } from '@app/models/transactionData.interface';
 import { TransactionDate } from '@app/models/transactionDate.enum';
+import { TransactionKey } from '@app/models/transactionKey.enum';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
@@ -19,19 +20,7 @@ export class TransactionsService {
   });
 
   constructor() {
-    this.data.update(() => ({
-      transactions,
-      totalSales: 0,
-      dateFilter: TransactionDate.TODAY,
-    }));
-
-    this.filterByDate(TransactionDate.TODAY);
-
-    /*const date = new Date(currentDate);
-    this.filterByDate(
-      TransactionDate.MONTH,
-      date.toLocaleString('default', { month: 'long' })
-    );*/
+    this._loadData();
   }
 
   getTransactions(): Transaction[] {
@@ -42,23 +31,39 @@ export class TransactionsService {
     return this.data();
   }
 
-  filterByDate(date: TransactionDate, month: string = ' '): void {
-    const monthName = this.translateService.instant(month);
+  private _loadData(): void {
+    const methods = this._getPaymentMethods();
 
-    this._setData({ ...this.data(), dateFilter: date, monthName });
-    this._filterByDate(date);
-    this._setTotal();
+    this.filterByPayment(methods);
+  }
+
+  filterByDate(date: TransactionDate, month: string = ' '): void {
+    this._setData({ ...this.data(), transactions });
+
+    const methods = this._getPaymentMethods();
+
+    this._filterByDate(date, month);
+    this._filterByPaymentMethods(methods);
   }
 
   filterByPayment(methods: PaymentType[]): void {
-    this.__filterByPaymentMethods(methods);
+    this._setData({ ...this.data(), transactions });
+
+    const date = this._getDate();
+    const month = this._getMonth();
+
+    this._filterByPaymentMethods(methods);
+    this._filterByDate(date, month);
   }
 
   private _setData(data: TransactionData): void {
     this.data.update(() => data);
   }
 
-  private _filterByDate(date: TransactionDate): void {
+  private _filterByDate(date: TransactionDate, month: string = ' '): void {
+    const monthName = this.translateService.instant(month);
+    this._setData({ ...this.data(), dateFilter: date, monthName });
+
     switch (date) {
       case TransactionDate.TODAY:
         this._filterByToday();
@@ -72,10 +77,14 @@ export class TransactionsService {
         this._filterByMonth();
         break;
     }
+
+    localStorage.setItem(TransactionKey.DATE, date);
+    localStorage.setItem(TransactionKey.MONTH, `${this.data().monthName}`);
+    this._setTotal();
   }
 
   private _filterByToday(): void {
-    const list = transactions;
+    const list = this.data().transactions;
 
     this._setData({
       ...this.data(),
@@ -89,7 +98,7 @@ export class TransactionsService {
   }
 
   private _filterByWeek(): void {
-    const list = transactions;
+    const list = this.data().transactions;
 
     this._setData({
       ...this.data(),
@@ -105,7 +114,7 @@ export class TransactionsService {
   }
 
   private _filterByMonth(): void {
-    const list = transactions;
+    const list = this.data().transactions;
 
     this._setData({
       ...this.data(),
@@ -118,7 +127,7 @@ export class TransactionsService {
     });
   }
 
-  private __filterByPaymentMethods(methods: PaymentType[]): void {
+  private _filterByPaymentMethods(methods: PaymentType[]): void {
     const list = this.data().transactions;
     const result = list.filter(({ paymentType }: Transaction) =>
       methods.includes(paymentType)
@@ -127,7 +136,14 @@ export class TransactionsService {
     this._setData({
       ...this.data(),
       transactions: result,
+      paymentTypes: methods,
     });
+
+    localStorage.setItem(
+      TransactionKey.PAYMENT_METHODS,
+      JSON.stringify(methods)
+    );
+    this._setTotal();
   }
 
   private _setTotal(): void {
@@ -141,5 +157,21 @@ export class TransactionsService {
       ...this.data(),
       totalSales,
     });
+  }
+
+  private _getPaymentMethods() {
+    return JSON.parse(
+      localStorage.getItem(TransactionKey.PAYMENT_METHODS) ??
+        `["${PaymentType.DATAPHONE}","${PaymentType.LINK}"]`
+    );
+  }
+
+  private _getDate() {
+    return (localStorage.getItem(TransactionKey.DATE) ??
+      TransactionDate.TODAY) as TransactionDate;
+  }
+
+  private _getMonth() {
+    return localStorage.getItem(TransactionKey.MONTH) ?? ' ';
   }
 }

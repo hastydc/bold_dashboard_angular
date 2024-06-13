@@ -1,4 +1,10 @@
-import { Component, Input, inject } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  SimpleChanges,
+  inject,
+} from '@angular/core';
 import { CdkListbox, CdkOption } from '@angular/cdk/listbox';
 import { TransactionData } from '@app/models/transactionData.interface';
 import { TranslateModule } from '@ngx-translate/core';
@@ -13,7 +19,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './payment-method-filter.component.html',
   styleUrl: './payment-method-filter.component.scss',
 })
-export class PaymentMethodFilterComponent {
+export class PaymentMethodFilterComponent implements OnChanges {
   @Input() transactionData!: TransactionData;
 
   private readonly transactionsService = inject(TransactionsService);
@@ -22,6 +28,10 @@ export class PaymentMethodFilterComponent {
   seeAll: boolean = false;
   selecteds: any[] = [];
   showList: boolean = false;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.selecteds = this.transactionData?.paymentTypes ?? [];
+  }
 
   toggleList(): void {
     this.showList = !this.showList;
@@ -53,5 +63,6 @@ export class PaymentMethodFilterComponent {
 
   filter(): void {
     this.transactionsService.filterByPayment(this.selecteds);
+    this.showList = false;
   }
 }
