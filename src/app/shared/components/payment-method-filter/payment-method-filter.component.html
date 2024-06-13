@@ -1,0 +1,63 @@
+<div class="payment-filter">
+  <div
+    class="payment-filter__header"
+    [attr.aria-label]="'filter' | translate"
+    (click)="toggleList()"
+  >
+    <label class="payment-filter__title" id="payment-filter">
+      {{ 'filter' | translate }}
+    </label>
+    <img class="payment-filter__icon" src="/assets/icons/icon-filter.svg" />
+  </div>
+
+  <ul
+    cdkListbox
+    cdkListboxMultiple
+    [cdkListboxValue]="selecteds"
+    (cdkListboxValueChange)="onSelect($event)"
+    aria-labelledby="payment-filter"
+    class="payment-filter__list"
+    [ngClass]="{ 'payment-filter__list--active': showList }"
+  >
+    @for (option of options; track option) {
+    <li
+      [cdkOption]="option"
+      class="payment-filter__option"
+      [attr.aria-label]="option | translate"
+    >
+      <input
+        type="checkbox"
+        class="payment-filter__cb"
+        [checked]="selecteds.includes(option)"
+      />
+
+      <span>
+        {{ option | translate }}
+      </span>
+    </li>
+    }
+
+    <li
+      [cdkOption]="optionAll"
+      class="payment-filter__option"
+      [attr.aria-label]="'seeAll' | translate"
+    >
+      <input type="checkbox" class="payment-filter__cb" [checked]="seeAll" />
+
+      <span>
+        {{ optionAll | translate }}
+      </span>
+    </li>
+
+    <li class="payment-filter__option">
+      <button
+        [ariaLabel]="'apply' | translate"
+        class="payment-filter__btn"
+        [disabled]="!selecteds.length"
+        (click)="filter()"
+      >
+        {{ 'apply' | translate }}
+      </button>
+    </li>
+  </ul>
+</div>

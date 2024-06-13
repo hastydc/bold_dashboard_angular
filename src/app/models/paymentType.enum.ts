@@ -1,4 +1,8 @@
 export enum PaymentType {
-  DATAPHONE,
-  LINK,
+  DATAPHONE = 'dataphonePayment',
+  LINK = 'linkPayment',
+}
+
+export enum PaymentBaseFilter {
+  ALL = 'seeAll',
 }

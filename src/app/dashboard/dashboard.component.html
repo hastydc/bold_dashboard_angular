@@ -8,6 +8,10 @@
       <div class="dashboard__date-selector">
         <app-date-selector [transactionData]="transactionData" />
       </div>
+
+      <div class="dashboard__payment-selector">
+        <app-payment-method-filter [transactionData]="transactionData" />
+      </div>
     </div>
   </section>
 

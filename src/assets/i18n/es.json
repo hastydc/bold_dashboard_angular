@@ -20,5 +20,10 @@
   "failedPayment": "Cobro no realizado",
   "boldDeduction": "Deducción Bold",
   "Today": "Hoy",
-  "Week": "Esta semana"
+  "Week": "Esta semana",
+  "filter": "Filtrar",
+  "dataphonePayment": "Cobro con datáfono",
+  "linkPayment": "Cobro con link de pago",
+  "seeAll": "Ver todos",
+  "apply": "Aplicar"
 }
