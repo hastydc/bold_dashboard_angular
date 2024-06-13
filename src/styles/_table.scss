@@ -55,7 +55,7 @@
   }
 
   &--border-gray {
-    border-left: rem(4) solid rgba($colorGrayDark, 0.2);
+    border-left: rem(4) solid rgba($colorGrayDark, 1);
   }
 
   &__content {
@@ -66,7 +66,7 @@
     min-height: rem(32);
 
     @include media(mobile) {
-      border-bottom: rem(1) solid rgba($colorGrayDark, 0.2);
+      border-bottom: rem(1) solid rgba($colorGrayDark, 1);
       box-sizing: border-box;
       padding-bottom: rem(8) rem(0) rem(16);
     }
