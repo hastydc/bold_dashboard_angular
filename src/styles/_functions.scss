@@ -1,5 +1,5 @@
-// $baseHref: '';
-$baseHref: '/bold-dashboard';
+$baseHref: '';
+// $baseHref: '/bold-dashboard';
 
 @function rem($value) {
   $remValue: calc($value / 16) + rem;

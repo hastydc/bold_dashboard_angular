@@ -29,39 +29,49 @@
         {{ transaction.createdAt | date : 'dd/MM/yyyy - HH:mm:ss' }}
       </div>
 
-      <h4 class="td__label">{{ 'paymentMethod' | translate }}</h4>
-      <div class="td__content table--gray">
-        <img
-          class="td__icon-card"
-          [src]="transaction.cardNumber.toString() | cardIcon"
-        />
-        <span>
-          {{ transaction.cardNumber | cardNumber }}
-        </span>
-      </div>
-
-      <h4 class="td__label">{{ 'idTransactionBold' | translate }}</h4>
-      <div class="td__content table--gray">
-        {{ transaction.id | uppercase }}
-      </div>
-
-      <h4 class="td__label">{{ 'amount' | translate }}</h4>
-      <div class="td__content table--blue td__content--col">
-        <div class="td__amount">
-          {{ transaction.amount | currency : '$' : 'symbol' : '1.0-0' }}
+      <div
+        class="td__expand"
+        [@collapse]="seeMore[transaction.id]"
+        (close)="seeMore[transaction.id] = false"
+      >
+        <h4 class="td__label">{{ 'paymentMethod' | translate }}</h4>
+        <div class="td__content table--gray">
+          <img
+            class="td__icon-card"
+            [src]="transaction.cardNumber.toString() | cardIcon"
+          />
+          <span>
+            {{ transaction.cardNumber | cardNumber }}
+          </span>
         </div>
 
-        @if (transaction.status === transactionStatus.SUCCESS) {
-        <div class="td__deduction-label table--gray">
-          {{ 'boldDeduction' | translate }}
+        <h4 class="td__label">{{ 'idTransactionBold' | translate }}</h4>
+        <div class="td__content table--gray">
+          {{ transaction.id | uppercase }}
         </div>
 
-        <div class="td__deduction-amount table--red">
-          -
-          {{ transaction.deduction | currency : '$' : 'symbol' : '1.0-0' }}
+        <h4 class="td__label">{{ 'amount' | translate }}</h4>
+        <div class="td__content table--blue td__content--col">
+          <div class="td__amount">
+            {{ transaction.amount | currency : '$' : 'symbol' : '1.0-0' }}
+          </div>
+
+          @if (transaction.status === transactionStatus.SUCCESS) {
+          <div class="td__deduction-label table--gray">
+            {{ 'boldDeduction' | translate }}
+          </div>
+
+          <div class="td__deduction-amount table--red">
+            -
+            {{ transaction.deduction | currency : '$' : 'symbol' : '1.0-0' }}
+          </div>
+          }
         </div>
-        }
       </div>
+
+      <button class="td__btn" (click)="toggleExpand(transaction.id)">
+        {{ (seeMore[transaction.id] ? 'seeLess' : 'seeMore') | translate }}
+      </button>
     </article>
     }
   </div>

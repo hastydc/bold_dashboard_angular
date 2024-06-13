@@ -104,4 +104,27 @@
     margin: rem(8) 0;
     font-size: rem(12);
   }
+
+  &__expand {
+    position: relative;
+  }
+
+  &__btn {
+    z-index: 1;
+    width: 100%;
+    background-color: var(--color-red);
+    box-sizing: border-box;
+    padding: rem(8);
+    text-transform: uppercase;
+    font-family: var(--font-bold);
+    letter-spacing: rem(2);
+    width: rem(150);
+    color: var(--color-gray-light);
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border-radius: rem(32);
+    margin: rem(8) auto;
+  }
 }
