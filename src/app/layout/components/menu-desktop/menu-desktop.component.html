@@ -12,8 +12,10 @@
     <i
       class="menu-desktop__info info"
       [attr.aria-label]="item.label | translate"
-      >?</i
     >
+      <span class="info__icon">?</span>
+      <span class="info__text">{{ item.label | translate }}</span>
+    </i>
     }
   </a>
   }
