@@ -17,7 +17,7 @@ export class CardIconPipe implements PipeTransform {
   }
 
   private _getCreditCardIcon(value: string): string {
-    const url = `/assets/icons`;
+    const url = `./assets/icons`;
 
     if (this._visa.test(value)) {
       return `${url}/icon-visa.svg`;
