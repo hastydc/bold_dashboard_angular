@@ -2,6 +2,7 @@
 @import 'fonts';
 @import 'functions';
 @import 'mixins';
+@import '@angular/cdk/overlay-prebuilt.css';
 
 :root {
   --color-blue: #{$colorBlue};

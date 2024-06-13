@@ -1,5 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { currentDate, transactions } from '@app/api/data';
+import { PaymentType } from '@app/models/paymentType.enum';
 import { Transaction } from '@app/models/transaction.interface';
 import { TransactionData } from '@app/models/transactionData.interface';
 import { TransactionDate } from '@app/models/transactionDate.enum';
@@ -47,6 +48,10 @@ export class TransactionsService {
     this._setData({ ...this.data(), dateFilter: date, monthName });
     this._filterByDate(date);
     this._setTotal();
+  }
+
+  filterByPayment(methods: PaymentType[]): void {
+    this.__filterByPaymentMethods(methods);
   }
 
   private _setData(data: TransactionData): void {
@@ -110,6 +115,18 @@ export class TransactionsService {
 
         return base.getMonth() === current.getMonth();
       }),
+    });
+  }
+
+  private __filterByPaymentMethods(methods: PaymentType[]): void {
+    const list = this.data().transactions;
+    const result = list.filter(({ paymentType }: Transaction) =>
+      methods.includes(paymentType)
+    );
+
+    this._setData({
+      ...this.data(),
+      transactions: result,
     });
   }
 
