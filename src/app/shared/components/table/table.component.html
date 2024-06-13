@@ -1,11 +1,5 @@
-<app-table-mobile
-  [transactions]="transactions"
-  [tableHeaders]="tableHeaders"
-  [dateType]="dateType"
-/>
+@if (transactionData) {
+<app-table-mobile [transactionData]="transactionData" />
 
-<app-table-desktop
-  [transactions]="transactions"
-  [tableHeaders]="tableHeaders"
-  [dateType]="dateType"
-/>
+<app-table-desktop [transactionData]="transactionData" />
+}

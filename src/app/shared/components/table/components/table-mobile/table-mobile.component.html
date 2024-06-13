@@ -1,10 +1,13 @@
 <div class="table">
   <div class="table__mobile mobile">
     <div class="table__th table__th--head">
-      {{ 'yourSales' + dateType | translate }}
+      {{
+        'yourSales' + transactionData.dateFilter
+          | translate : { month: transactionData.monthName }
+      }}
     </div>
 
-    @for (transaction of transactions; track transaction.id) {
+    @for (transaction of transactionData.transactions; track transaction.id) {
     <article
       class="td"
       [ngClass]="{

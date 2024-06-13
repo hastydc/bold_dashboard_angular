@@ -10,6 +10,7 @@
   --color-gray-light: #{$colorGrayLight};
   --color-bg: #{$colorBg};
   --color-gradient: #{$colorGradient};
+  --color-gradient-red: #{$colorGradientRed};
   --font-regular: #{$fontRegular};
   --font-semibold: #{$fontSemibold};
   --font-bold: #{$fontBold};
@@ -31,6 +32,7 @@ body {
   font-size: rem(10);
   justify-content: center;
   align-items: center;
+  font-style: normal;
   cursor: pointer;
 }
 

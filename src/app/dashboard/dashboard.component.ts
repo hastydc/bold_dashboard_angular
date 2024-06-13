@@ -1,22 +1,25 @@
 import { Component, effect, inject } from '@angular/core';
-import { Transaction } from '@app/models/transaction.interface';
+import { TransactionData } from '@app/models/transactionData.interface';
+import { CardPriceComponent } from '@app/shared/components/card-price/card-price.component';
+import { DateSelectorComponent } from '@app/shared/components/date-selector/date-selector.component';
 import { TableComponent } from '@app/shared/components/table/table.component';
 import { TransactionsService } from '@app/shared/services/transactions/transactions.service';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [TableComponent],
+  imports: [TableComponent, CardPriceComponent, DateSelectorComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
   private readonly transactionsService = inject(TransactionsService);
-  transactions: Transaction[] = [];
+  transactionData!: TransactionData;
+  monthName: string = '';
 
   constructor() {
     effect(() => {
-      this.transactions = this.transactionsService.getTransactions();
+      this.transactionData = this.transactionsService.getTransactionData();
     });
   }
 }

@@ -5,10 +5,11 @@
   "myBusiness": "Mi negocio",
   "help": "Ayuda",
   "yourSalesToday": "Tus ventas de hoy",
-  "yourSalesThisWeek": "Tus ventas de esta semana",
+  "yourSalesWeek": "Tus ventas de esta semana",
+  "June": "Junio",
   "yourSalesMonth": "Tus ventas de {{month}}",
   "totalSalesToday": "Total de ventas de hoy",
-  "totalSalesThisWeek": "Total de ventas de esta semana",
+  "totalSalesWeek": "Total de ventas de esta semana",
   "totalSalesMonth": "Total de ventas de {{month}}",
   "transaction": "Transacción",
   "dateAndHour": "Fecha y hora",
@@ -17,5 +18,7 @@
   "amount": "Monto",
   "successfulPayment": "Cobro exitoso",
   "failedPayment": "Cobro no realizado",
-  "boldDeduction": "Deducción Bold"
+  "boldDeduction": "Deducción Bold",
+  "Today": "Hoy",
+  "Week": "Esta semana"
 }

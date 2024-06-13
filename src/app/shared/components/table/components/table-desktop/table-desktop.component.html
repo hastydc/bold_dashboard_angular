@@ -3,7 +3,10 @@
     <thead>
       <tr>
         <th class="table__th table__th--head" [colSpan]="5">
-          {{ 'yourSales' + dateType | translate }}
+          {{
+            'yourSales' + transactionData.dateFilter
+              | translate : { month: transactionData.monthName }
+          }}
         </th>
       </tr>
 
@@ -15,7 +18,7 @@
     </thead>
 
     <tbody>
-      @for (transaction of transactions; track transaction.id) {
+      @for (transaction of transactionData.transactions; track transaction.id) {
       <tr>
         <td
           class="td"
