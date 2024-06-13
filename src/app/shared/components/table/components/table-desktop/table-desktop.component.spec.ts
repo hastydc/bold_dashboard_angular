@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableDesktopComponent } from './table-desktop.component';
+import { TranslateModuleMock } from '@app/shared/tests/utils.mock';
+import { ActivatedRoute } from '@angular/router';
 
 describe('TableDesktopComponent', () => {
   let component: TableDesktopComponent;
@@ -8,10 +10,9 @@ describe('TableDesktopComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TableDesktopComponent]
-    })
-    .compileComponents();
-    
+      imports: [TableDesktopComponent, TranslateModuleMock],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(TableDesktopComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
