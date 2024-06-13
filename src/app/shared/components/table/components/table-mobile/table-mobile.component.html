@@ -1,0 +1,65 @@
+<div class="table">
+  <div class="table__mobile mobile">
+    <div class="table__th table__th--head">
+      {{ 'yourSales' + dateType | translate }}
+    </div>
+
+    @for (transaction of transactions; track transaction.id) {
+    <article
+      class="td"
+      [ngClass]="{
+            'td--border-blue': transaction.status === transactionStatus.SUCCESS,
+            'td--border-gray': transaction.status === transactionStatus.FAILED,
+          }"
+    >
+      <h4 class="td__label">{{ 'transaction' | translate }}</h4>
+      <div class="td__content table--blue">
+        <img
+          class="td__icon"
+          [src]="transaction.paymentType.toString() | transactionIcon"
+        />
+        <span class="td__status">{{ transaction.status | translate }}</span>
+      </div>
+
+      <h4 class="td__label">{{ 'dateAndHour' | translate }}</h4>
+      <div class="td__content table--gray">
+        {{ transaction.createdAt | date : 'dd/MM/yyyy - HH:mm:ss' }}
+      </div>
+
+      <h4 class="td__label">{{ 'paymentMethod' | translate }}</h4>
+      <div class="td__content table--gray">
+        <img
+          class="td__icon-card"
+          [src]="transaction.cardNumber.toString() | cardIcon"
+        />
+        <span>
+          {{ transaction.cardNumber | cardNumber }}
+        </span>
+      </div>
+
+      <h4 class="td__label">{{ 'idTransactionBold' | translate }}</h4>
+      <div class="td__content table--gray">
+        {{ transaction.id | uppercase }}
+      </div>
+
+      <h4 class="td__label">{{ 'amount' | translate }}</h4>
+      <div class="td__content table--blue td__content--col">
+        <div class="td__amount">
+          {{ transaction.amount | currency : '$' : 'symbol' : '1.0-0' }}
+        </div>
+
+        @if (transaction.status === transactionStatus.SUCCESS) {
+        <div class="td__deduction-label table--gray">
+          {{ 'boldDeduction' | translate }}
+        </div>
+
+        <div class="td__deduction-amount table--red">
+          -
+          {{ transaction.deduction | currency : '$' : 'symbol' : '1.0-0' }}
+        </div>
+        }
+      </div>
+    </article>
+    }
+  </div>
+</div>

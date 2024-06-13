@@ -11,13 +11,13 @@
       <app-menu-icon [active]="showMenu" (actionToggleMenu)="toggleMenu()" />
     </div>
 
-    <div class="header__menu-desktop">
+    <div class="header__menu-desktop desktop">
       <app-menu-desktop [menuItems]="menuItems" />
     </div>
   </div>
 </header>
 
-<div class="menu-mobile">
+<div class="menu-mobile mobile">
   <app-menu-mobile
     [active]="showMenu"
     [menuItems]="menuItems"

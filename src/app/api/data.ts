@@ -4,6 +4,14 @@ import { TransactionStatus } from '@app/models/transactionStatus.enum';
 
 const currentDate: number = 1718424298;
 
+const tableHeaders: string[] = [
+  'transaction',
+  'dateAndHour',
+  'paymentMethod',
+  'idTransactionBold',
+  'amount',
+];
+
 const transactions: Transaction[] = [
   {
     id: 'GZEN23784UBV1',
@@ -12,7 +20,7 @@ const transactions: Transaction[] = [
     createdAt: 1718424298,
     cardNumber: 5555555555554444,
     amount: 25000,
-    deduction: 15000,
+    deduction: 1500,
   },
   {
     id: 'GZEN23784UBV2',
@@ -29,7 +37,7 @@ const transactions: Transaction[] = [
     createdAt: 1718424298,
     cardNumber: 5105105105105100,
     amount: 25000,
-    deduction: 15000,
+    deduction: 1500,
   },
   {
     id: 'GZEN23784UBV4',
@@ -46,7 +54,7 @@ const transactions: Transaction[] = [
     createdAt: 1718251567,
     cardNumber: 5105105105105100,
     amount: 25000,
-    deduction: 15000,
+    deduction: 1500,
   },
   {
     id: 'GZEN23784UBV6',
@@ -63,7 +71,7 @@ const transactions: Transaction[] = [
     createdAt: 1718078767,
     cardNumber: 5105105105105100,
     amount: 25000,
-    deduction: 15000,
+    deduction: 1500,
   },
   {
     id: 'GZEN23784UBV8',
@@ -80,7 +88,7 @@ const transactions: Transaction[] = [
     createdAt: 1717905967,
     cardNumber: 5105105105105100,
     amount: 25000,
-    deduction: 15000,
+    deduction: 1500,
   },
   {
     id: 'GZEN23784UBV10',
@@ -97,7 +105,7 @@ const transactions: Transaction[] = [
     createdAt: 1717733167,
     cardNumber: 5105105105105100,
     amount: 25000,
-    deduction: 15000,
+    deduction: 1500,
   },
   {
     id: 'GZEN23784UBV12',
@@ -114,7 +122,7 @@ const transactions: Transaction[] = [
     createdAt: 1717560367,
     cardNumber: 5105105105105100,
     amount: 25000,
-    deduction: 15000,
+    deduction: 1500,
   },
   {
     id: 'GZEN23784UBV14',
@@ -131,7 +139,7 @@ const transactions: Transaction[] = [
     createdAt: 1717387567,
     cardNumber: 5105105105105100,
     amount: 25000,
-    deduction: 15000,
+    deduction: 1500,
   },
   {
     id: 'GZEN23784UBV16',
@@ -142,3 +150,5 @@ const transactions: Transaction[] = [
     amount: 25000,
   },
 ];
+
+export { transactions, currentDate, tableHeaders };

@@ -28,18 +28,4 @@
       display: none;
     }
   }
-
-  &__menu-desktop {
-    display: none;
-
-    @include media(tablet) {
-      display: flex;
-    }
-  }
-}
-
-.menu-mobile {
-  @include media(tablet) {
-    display: none;
-  }
 }
