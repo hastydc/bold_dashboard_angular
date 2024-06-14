@@ -1,17 +1,26 @@
 <div class="payment-filter">
   <button
-    class="payment-filter__header"
+    class="payment-filter__header-btn"
     [ariaLabel]="'filter' | translate"
     (click)="toggleList()"
   >
     <span class="payment-filter__title" id="payment-filter">
       {{ 'filter' | translate }}
     </span>
-    <img
-      [alt]="'filter' | translate"
-      class="payment-filter__icon"
-      src="./assets/icons/icon-filter.svg"
-    />
+    <div class="payment-filter__icon-wrapper">
+      <img
+        [alt]="'filter' | translate"
+        class="payment-filter__icon"
+        src="./assets/icons/icon-filter.svg"
+        [ngClass]="{ 'payment-filter__icon--active': !showList }"
+      />
+      <img
+        [alt]="'filter' | translate"
+        class="payment-filter__icon"
+        src="./assets/icons/icon-cross.svg"
+        [ngClass]="{ 'payment-filter__icon--active': showList }"
+      />
+    </div>
   </button>
 
   <ul

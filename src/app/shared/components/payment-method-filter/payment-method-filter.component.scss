@@ -8,7 +8,7 @@
   background-color: var(--color-gray-light);
   box-shadow: $boxShadow;
 
-  &__header {
+  &__header-btn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,10 +23,20 @@
     background-color: transparent;
     border: 0;
     width: 100%;
+    min-height: rem(40);
+
+    @include media(mobile) {
+      margin-bottom: rem(16);
+    }
   }
 
   &__icon {
-    height: rem(24);
+    height: rem(16);
+    display: none;
+
+    &--active {
+      display: flex;
+    }
   }
 
   &__title {
