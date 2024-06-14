@@ -42,4 +42,4 @@ Run `npm run prettier` to format files in src folder.
 
 ## Live demo
 
-Live demo here -> -> -> [https://efrainmancilla.pantera-studio.com/bold-dashboard] or [https://bold-dashboard-angular-8z7yeu3v4-hastydc-9f3cb7a4.vercel.app/#/]
+Live demo here -> -> -> [https://efrainmancilla.pantera-studio.com/bold-dashboard] or [https://bold-dashboard-angular.vercel.app/#/]
