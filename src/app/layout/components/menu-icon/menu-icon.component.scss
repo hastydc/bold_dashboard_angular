@@ -5,6 +5,9 @@
   flex-direction: column;
   gap: rem(4);
   width: rem(32);
+  background-color: transparent;
+  border: 0;
+  padding: 0;
 
   &__line {
     background-color: var(--color-gray-light);

@@ -1,14 +1,18 @@
 <div class="payment-filter">
-  <div
+  <button
     class="payment-filter__header"
-    [attr.aria-label]="'filter' | translate"
+    [ariaLabel]="'filter' | translate"
     (click)="toggleList()"
   >
-    <label class="payment-filter__title" id="payment-filter">
+    <span class="payment-filter__title" id="payment-filter">
       {{ 'filter' | translate }}
-    </label>
-    <img class="payment-filter__icon" src="./assets/icons/icon-filter.svg" />
-  </div>
+    </span>
+    <img
+      [alt]="'filter' | translate"
+      class="payment-filter__icon"
+      src="./assets/icons/icon-filter.svg"
+    />
+  </button>
 
   <ul
     cdkListbox

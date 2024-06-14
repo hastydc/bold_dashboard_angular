@@ -21,6 +21,7 @@
       <div class="td__content table--blue">
         <img
           class="td__icon"
+          [alt]="transaction.paymentType | translate"
           [src]="transaction.paymentType.toString() | transactionIcon"
         />
         <span class="td__status">{{ transaction.status | translate }}</span>
@@ -39,6 +40,7 @@
         <h4 class="td__label">{{ 'paymentMethod' | translate }}</h4>
         <div class="td__content table--gray">
           <img
+            [alt]="transaction.cardNumber"
             class="td__icon-card"
             [src]="transaction.cardNumber.toString() | cardIcon"
           />

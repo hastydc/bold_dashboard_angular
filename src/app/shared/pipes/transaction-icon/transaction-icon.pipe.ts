@@ -1,6 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { PaymentType } from '@app/models/paymentType.enum';
-import { Transaction } from '@app/models/transaction.interface';
 
 @Pipe({
   name: 'transactionIcon',

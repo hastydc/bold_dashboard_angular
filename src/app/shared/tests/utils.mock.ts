@@ -2,7 +2,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 
 export class TranslateLoaderMock extends TranslateLoader {
-  getTranslation(lang: string): Observable<any> {
+  getTranslation(): Observable<any> {
     return of('');
   }
 }

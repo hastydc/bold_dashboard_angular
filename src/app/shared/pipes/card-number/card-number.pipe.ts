@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Transaction } from '@app/models/transaction.interface';
 
 @Pipe({
   name: 'cardNumber',
