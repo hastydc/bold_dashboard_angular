@@ -38,6 +38,7 @@
           <div class="td__content table--blue">
             <img
               class="td__icon"
+              [alt]="transaction.paymentType | translate"
               [src]="transaction.paymentType.toString() | transactionIcon"
             />
             <span class="td__status">{{ transaction.status | translate }}</span>
@@ -54,6 +55,7 @@
           <div class="td__content table--gray">
             <img
               class="td__icon-card"
+              [alt]="transaction.cardNumber"
               [src]="transaction.cardNumber.toString() | cardIcon"
             />
             <span>

@@ -1,13 +1,5 @@
-import {
-  animate,
-  sequence,
-  state,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { TransactionData } from '@app/models/transactionData.interface';
 import { TransactionStatus } from '@app/models/transactionStatus.enum';
 import { CardIconPipe } from '@app/shared/pipes/card-icon/card-icon.pipe';

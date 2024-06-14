@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PaymentMethodFilterComponent } from './payment-method-filter.component';
 import { TranslateModuleMock } from '@app/shared/tests/utils.mock';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { PaymentBaseFilter, PaymentType } from '@app/models/paymentType.enum';
 
 describe('PaymentMethodFilterComponent', () => {

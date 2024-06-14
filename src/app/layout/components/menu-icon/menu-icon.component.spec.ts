@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuIconComponent } from './menu-icon.component';
+import { TranslateModuleMock } from '@app/shared/tests/utils.mock';
+import { ActivatedRoute } from '@angular/router';
 
 describe('MenuIconComponent', () => {
   let component: MenuIconComponent;
@@ -8,7 +10,8 @@ describe('MenuIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuIconComponent],
+      imports: [MenuIconComponent, TranslateModuleMock],
+      providers: [{ provide: ActivatedRoute, useValue: {} }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(MenuIconComponent);

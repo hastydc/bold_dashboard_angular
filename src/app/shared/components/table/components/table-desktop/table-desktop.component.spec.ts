@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableDesktopComponent } from './table-desktop.component';
 import { TranslateModuleMock } from '@app/shared/tests/utils.mock';
-import { ActivatedRoute } from '@angular/router';
 
 describe('TableDesktopComponent', () => {
   let component: TableDesktopComponent;
