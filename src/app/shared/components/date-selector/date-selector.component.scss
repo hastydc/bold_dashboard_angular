@@ -30,6 +30,7 @@
     box-sizing: border-box;
     padding: rem(8);
     transition: 0.5s ease-in-out;
+    text-transform: capitalize;
 
     &--active,
     &:hover {

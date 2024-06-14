@@ -52,7 +52,6 @@ export class TableMobileComponent implements OnChanges {
   }
 
   toggleExpand(id: string): void {
-    const value = !(this.seeMore[id]?.toString() === 'true');
-    this.seeMore[id] = value;
+    this.seeMore[id] = !this.seeMore[id];
   }
 }

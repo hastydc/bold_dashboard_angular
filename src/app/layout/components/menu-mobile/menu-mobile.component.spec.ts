@@ -8,10 +8,9 @@ describe('MenuMobileComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuMobileComponent]
-    })
-    .compileComponents();
-    
+      imports: [MenuMobileComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(MenuMobileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +18,12 @@ describe('MenuMobileComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('toggleMenu', () => {
+    const spy = spyOn(component.actionToggleMenu, 'emit').and.callThrough();
+    component.toggleMenu();
+
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

@@ -51,7 +51,7 @@ export class PaymentMethodFilterComponent implements OnChanges {
       return;
     }
 
-    if (value.length == this.options.length) {
+    if (value.length === this.options.length) {
       this.selecteds = [...value, this.optionAll];
       this.seeAll = true;
     } else {
