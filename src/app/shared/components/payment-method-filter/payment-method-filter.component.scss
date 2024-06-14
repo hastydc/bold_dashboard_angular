@@ -2,11 +2,21 @@
 @import 'mixins';
 @import 'vars';
 
+:host ::ng-deep {
+  .payment-filter {
+    svg {
+      fill: var(--color-main-contrast);
+      stroke: var(--color-main-contrast);
+    }
+  }
+}
+
 .payment-filter {
   position: relative;
   border-radius: rem(16);
   background-color: var(--color-gray-light);
   box-shadow: $boxShadow;
+  border: rem(1) solid var(--color-text-gray);
 
   &__header-btn {
     display: flex;
@@ -24,6 +34,7 @@
     border: 0;
     width: 100%;
     min-height: rem(40);
+    color: var(--color-main-contrast);
 
     @include media(mobile) {
       margin-bottom: rem(16);
@@ -31,8 +42,13 @@
   }
 
   &__icon {
+    width: rem(16);
     height: rem(16);
     display: none;
+    background-color: var(--color-text-gray);
+    box-sizing: border-box;
+    padding: rem(2);
+    border-radius: rem(4);
 
     &--active {
       display: flex;
@@ -74,7 +90,7 @@
   &__option {
     font-size: rem(20);
     cursor: pointer;
-    color: var(--color-blue);
+    color: var(--color-main-contrast);
     font-family: var(--font-semibold);
     box-sizing: border-box;
     display: flex;
@@ -86,8 +102,8 @@
 
   &__btn {
     background-color: var(--color-red);
-    color: var(--color-gray-light);
     font-family: var(--font-semibold);
+    color: var(--color-text-gray);
     border: 0;
     width: 75%;
     margin: 0 auto;
@@ -119,7 +135,7 @@
       position: relative;
       width: 100%;
       height: 100%;
-      background-color: var(--color-blue);
+      background-color: var(--color-main-contrast);
       content: ' ';
       opacity: 0;
       transition: 0.25s ease-in-out;

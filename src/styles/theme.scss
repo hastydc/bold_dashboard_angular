@@ -6,15 +6,26 @@
 
 :root {
   --color-blue: #{$colorBlue};
-  --color-red: #{$colorRed};
   --color-gray-dark: #{$colorGrayDark};
-  --color-gray-light: #{$colorGrayLight};
-  --color-bg: #{$colorBg};
+  --color-red: #{$colorRed};
+  --color-text-gray: #{$colorGrayLight};
   --color-gradient: #{$colorGradient};
   --color-gradient-red: #{$colorGradientRed};
   --font-regular: #{$fontRegular};
   --font-semibold: #{$fontSemibold};
   --font-bold: #{$fontBold};
+}
+
+[data-theme='light'] {
+  --color-bg: #{$colorBg};
+  --color-gray-light: #{$colorGrayLight};
+  --color-main-contrast: #{$colorBlue};
+}
+
+[data-theme='dark'] {
+  --color-bg: #{$colorBlue};
+  --color-gray-light: #{$colorBlue};
+  --color-main-contrast: #{$colorGrayLight};
 }
 
 body {
@@ -26,7 +37,8 @@ body {
 
 .info {
   border-radius: 100%;
-  border: rem(1) solid var(--color-gray-light);
+  border: rem(1) solid var(--color-text-gray);
+  color: var(--color-text-gray);
   width: rem(14);
   height: rem(14);
   display: flex;

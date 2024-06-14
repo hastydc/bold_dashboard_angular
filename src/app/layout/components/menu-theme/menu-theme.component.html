@@ -1,0 +1,19 @@
+<button
+  [ariaLabel]="'switchTheme' | translate"
+  class="theme-btn"
+  (click)="toggleTheme()"
+  (keyup)="toggleTheme()"
+>
+  <img
+    class="theme-btn__icon-light"
+    src="./assets/icons/icon-light.svg"
+    [alt]="'light' | translate"
+    [ngClass]="{ 'theme-btn__icon-light--active': isDark }"
+  />
+  <img
+    class="theme-btn__icon-dark"
+    src="./assets/icons/icon-dark.svg"
+    alt="'dark' | translate"
+    [ngClass]="{ 'theme-btn__icon-dark--active': !isDark }"
+  />
+</button>

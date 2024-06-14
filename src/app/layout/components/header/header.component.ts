@@ -5,6 +5,7 @@ import { LogoComponent } from '@app/shared/components/logo/logo.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { MenuIconComponent } from '../menu-icon/menu-icon.component';
 import { MenuItem } from '@app/models/menuItem.interface';
+import { MenuThemeComponent } from '../menu-theme/menu-theme.component';
 
 /**
  * HeaderComponent
@@ -18,6 +19,7 @@ import { MenuItem } from '@app/models/menuItem.interface';
     MenuIconComponent,
     LogoComponent,
     TranslateModule,
+    MenuThemeComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
