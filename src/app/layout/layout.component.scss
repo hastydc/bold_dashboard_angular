@@ -6,7 +6,7 @@
   flex-direction: column;
   width: 100%;
   box-sizing: border-box;
-  padding: rem(32);
+  padding: rem(96) rem(32) rem(32);
 
   @include media(tablet) {
     padding: rem(64);

@@ -10,10 +10,12 @@
   padding: rem(16) rem(32);
   position: relative;
   z-index: 10;
+  position: fixed;
 
   @include media(tablet) {
     height: rem(128);
     padding: rem(32) rem(64);
+    position: relative;
   }
 
   &__menu {
