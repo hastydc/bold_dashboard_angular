@@ -1,27 +1,45 @@
-# BoldDashboardAngular
+# Getting Started with Bold Dasbhoard Demo 2024
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
+This app was created wit Angular cli
 
-## Development server
+## Version
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Node v20.12.2
+Chrome 125.0.6422.142
+Angular Cli 17+
 
-## Code scaffolding
+## Available scripts and steps to setup and run app
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+With correct node version you must run:
 
-## Build
+### `npm i`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+In the project directory, you can run:
 
-## Running unit tests
+### `npm run start`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Running end-to-end tests
+### `npm run build`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Further help
+### `ng lint`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run `ng lint` to validate lint rules. (All files pass linting).
+
+### `ng test --code-coverage`
+
+Run `ng test --code-coverage` to get coverage report stored in ./coverage/index.html (coverage is on 100%).
+
+### `npm run compodoc:build-and-serve`
+
+Run `npm run compodoc:build-and-serve` to get coverage report stored in ./documentation/coverage.html (coverage is on 100%).
+
+### `npm run prettier`
+
+Run `npm run prettier` to format files in src folder.
+
+## Live demo
+
+Live demo here -> -> -> [https://efrainmancilla.pantera-studio.com/bold-bashboard] or []
