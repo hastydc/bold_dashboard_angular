@@ -15,7 +15,7 @@
 
   &__header {
     background: var(--color-gradient-red);
-    color: var(--color-gray-light);
+    color: var(--color-text-gray);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -65,5 +65,6 @@
 
   &__date {
     font-size: rem(18);
+    color: var(--color-main-contrast);
   }
 }

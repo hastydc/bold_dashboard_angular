@@ -4,6 +4,10 @@
   </div>
 
   <div class="header__menu">
+    <div class="header__menu-theme header__menu-theme--mobile">
+      <app-menu-theme />
+    </div>
+
     <div
       class="header__menu-icon"
       [attr.aria-label]="'showOrHideMenu' | translate"
@@ -13,6 +17,10 @@
 
     <div class="header__menu-desktop desktop">
       <app-menu-desktop [menuItems]="menuItems" />
+    </div>
+
+    <div class="header__menu-theme header__menu-theme--desktop">
+      <app-menu-theme />
     </div>
   </div>
 </header>

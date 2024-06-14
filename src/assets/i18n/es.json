@@ -29,5 +29,8 @@
   "transactionsNotFound": "No se encontraron transacciones",
   "totalSales": "Ventas totales",
   "seeMore": "Ver más",
-  "seeLess": "Ver menos"
+  "seeLess": "Ver menos",
+  "switchTheme": "Cambiar tema",
+  "light": "Claro",
+  "dark": "Oscuro"
 }

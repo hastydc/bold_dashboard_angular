@@ -6,10 +6,10 @@
 
 :root {
   --color-blue: #{$colorBlue};
-  --color-red: #{$colorRed};
+  --color-blue-body: #{$colorBlueBody};
   --color-gray-dark: #{$colorGrayDark};
-  --color-gray-light: #{$colorGrayLight};
-  --color-bg: #{$colorBg};
+  --color-red: #{$colorRed};
+  --color-text-gray: #{$colorGrayLight};
   --color-gradient: #{$colorGradient};
   --color-gradient-red: #{$colorGradientRed};
   --font-regular: #{$fontRegular};
@@ -17,16 +17,33 @@
   --font-bold: #{$fontBold};
 }
 
+[data-theme='light'] {
+  --color-bg: #{$colorBg};
+  --color-gray-light: #{$colorGrayLight};
+  --color-main-contrast: #{$colorBlue};
+  --color-blue-body: #{$colorBg};
+  --color-hover: #{$colorBlueHover};
+}
+
+[data-theme='dark'] {
+  --color-bg: #{$colorBlue};
+  --color-gray-light: #{$colorBlue};
+  --color-main-contrast: #{$colorGrayLight};
+  --color-blue-body: #{$colorBlueBody};
+  --color-hover: #{$colorGrayHover};
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: var(--font-regular);
-  background-color: var(--color-bg);
+  background-color: var(--color-blue-body);
 }
 
 .info {
   border-radius: 100%;
-  border: rem(1) solid var(--color-gray-light);
+  border: rem(1) solid var(--color-text-gray);
+  color: var(--color-text-gray);
   width: rem(14);
   height: rem(14);
   display: flex;
