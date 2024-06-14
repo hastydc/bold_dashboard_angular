@@ -8,10 +8,9 @@ describe('MenuIconComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuIconComponent]
-    })
-    .compileComponents();
-    
+      imports: [MenuIconComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(MenuIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +18,12 @@ describe('MenuIconComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('toggleMenu', () => {
+    const spy = spyOn(component.actionToggleMenu, 'emit').and.callThrough();
+    component.toggleMenu();
+
+    expect(spy).toHaveBeenCalledTimes(1);
   });
 });

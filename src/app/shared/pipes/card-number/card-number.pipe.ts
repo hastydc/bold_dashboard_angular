@@ -6,7 +6,7 @@ import { Transaction } from '@app/models/transaction.interface';
   standalone: true,
 })
 export class CardNumberPipe implements PipeTransform {
-  transform(value: number | string): unknown {
+  transform(value: number | string): string {
     const source = value.toString();
     const lastNumbers: string = source.slice(-4);
 

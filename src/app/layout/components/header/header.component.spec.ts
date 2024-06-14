@@ -22,4 +22,11 @@ describe('HeaderComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('toggleMenu', () => {
+    component.showMenu = false;
+    component.toggleMenu();
+
+    expect(component.showMenu).toBeTrue();
+  });
 });
