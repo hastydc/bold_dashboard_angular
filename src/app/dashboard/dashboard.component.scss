@@ -39,5 +39,9 @@
 
   &__payment-selector {
     width: auto;
+
+    @include media(mobile) {
+      margin-bottom: rem(16);
+    }
   }
 }

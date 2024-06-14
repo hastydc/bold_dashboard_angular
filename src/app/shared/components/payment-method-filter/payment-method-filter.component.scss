@@ -35,10 +35,6 @@
     width: 100%;
     min-height: rem(40);
     color: var(--color-main-contrast);
-
-    @include media(mobile) {
-      margin-bottom: rem(16);
-    }
   }
 
   &__icon {

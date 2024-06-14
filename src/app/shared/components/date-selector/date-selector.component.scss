@@ -38,7 +38,7 @@
 
     &--active,
     &:hover {
-      background: rgba($colorBlue, 0.1);
+      background: var(--color-hover);
     }
   }
 }
