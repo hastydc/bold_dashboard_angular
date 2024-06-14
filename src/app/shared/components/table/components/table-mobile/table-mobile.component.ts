@@ -8,6 +8,9 @@ import { TransactionIconPipe } from '@app/shared/pipes/transaction-icon/transact
 import { TranslateModule } from '@ngx-translate/core';
 import { animations } from './table-mobile.animations';
 
+/**
+ * TableMobileComponent
+ */
 @Component({
   selector: 'app-table-mobile',
   standalone: true,
@@ -23,11 +26,18 @@ import { animations } from './table-mobile.animations';
   styleUrl: './table-mobile.component.scss',
 })
 export class TableMobileComponent implements OnChanges {
+  /** transactionData */
   @Input() transactionData!: TransactionData;
 
+  /** seeMore */
   seeMore: { [key: string]: boolean } = {};
+
+  /** transactionStatus */
   transactionStatus = TransactionStatus;
 
+  /**
+   * ngOnChanges
+   */
   ngOnChanges(): void {
     if (
       !Object.keys(this.seeMore).length &&
@@ -37,12 +47,19 @@ export class TableMobileComponent implements OnChanges {
     }
   }
 
+  /**
+   * initSeeMore
+   */
   initSeeMore(): void {
     this.transactionData.transactions.forEach(({ id }) => {
       this.seeMore[id] = false;
     });
   }
 
+  /**
+   * toggleExpand
+   * @param {string} id
+   */
   toggleExpand(id: string): void {
     this.seeMore[id] = !this.seeMore[id];
   }

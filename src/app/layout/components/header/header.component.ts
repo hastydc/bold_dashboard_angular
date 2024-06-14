@@ -6,6 +6,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MenuIconComponent } from '../menu-icon/menu-icon.component';
 import { MenuItem } from '@app/models/menuItem.interface';
 
+/**
+ * HeaderComponent
+ */
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -20,12 +23,18 @@ import { MenuItem } from '@app/models/menuItem.interface';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  /** showMenu */
   public showMenu: boolean = false;
+
+  /** menuItems */
   public menuItems: MenuItem[] = [
     { link: '/', label: 'myBusiness' },
     { link: '/', label: 'help', info: true },
   ];
 
+  /**
+   * toggleMenu
+   */
   toggleMenu(): void {
     this.showMenu = !this.showMenu;
   }

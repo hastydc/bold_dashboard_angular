@@ -10,6 +10,9 @@ import { TableMobileComponent } from './components/table-mobile/table-mobile.com
 import { TableDesktopComponent } from './components/table-desktop/table-desktop.component';
 import { TransactionData } from '@app/models/transactionData.interface';
 
+/**
+ * TableComponent
+ */
 @Component({
   selector: 'app-table',
   standalone: true,
@@ -25,8 +28,12 @@ import { TransactionData } from '@app/models/transactionData.interface';
   templateUrl: './table.component.html',
 })
 export class TableComponent {
+  /** transactionData */
   @Input() transactionData!: TransactionData;
 
+  /** tableHeaders for render inside a for the th's table header */
   tableHeaders: string[] = tableHeaders;
+
+  /** transacionStatus */
   transactionStatus = TransactionStatus;
 }

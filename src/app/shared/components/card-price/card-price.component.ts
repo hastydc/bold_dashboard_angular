@@ -5,6 +5,9 @@ import { TransactionData } from '@app/models/transactionData.interface';
 import { TransactionDate } from '@app/models/transactionDate.enum';
 import { TranslateModule } from '@ngx-translate/core';
 
+/**
+  CardPriceComponent
+ */
 @Component({
   selector: 'app-card-price',
   standalone: true,
@@ -13,13 +16,17 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './card-price.component.scss',
 })
 export class CardPriceComponent {
+  /** transactionData */
   @Input() transactionData!: TransactionData;
 
+  /** dateOption */
   dateOption = TransactionDate;
 
+  /** monthName */
   monthName: string = new Date(currentDate).toLocaleString('default', {
     month: 'long',
   });
 
-  dayName: number = new Date(currentDate).getDate();
+  /** dayNumber */
+  dayNumber: number = new Date(currentDate).getDate();
 }

@@ -7,7 +7,10 @@ import { ApiService } from '../api/api.service';
 import { throwError } from 'rxjs';
 import { transactions } from '@app/api/data';
 import { TransactionDate } from '@app/models/transactionDate.enum';
-import { PaymentBaseFilter, PaymentType } from '@app/models/paymentType.enum';
+import {
+  PaymentBaseFilter,
+  PaymentMethod,
+} from '@app/models/paymentMethod.enum';
 
 describe('TransactionsService', () => {
   let service: TransactionsService;
@@ -72,8 +75,8 @@ describe('TransactionsService', () => {
     const methods = (service as any)._getPaymentMethods();
 
     expect(methods).toEqual([
-      PaymentType.DATAPHONE,
-      PaymentType.LINK,
+      PaymentMethod.DATAPHONE,
+      PaymentMethod.LINK,
       PaymentBaseFilter.ALL,
     ]);
   });

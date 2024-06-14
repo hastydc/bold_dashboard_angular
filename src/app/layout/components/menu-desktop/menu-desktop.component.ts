@@ -3,6 +3,9 @@ import { RouterModule } from '@angular/router';
 import { MenuItem } from '@app/models/menuItem.interface';
 import { TranslateModule } from '@ngx-translate/core';
 
+/**
+ * MenuDesktopComponent
+ */
 @Component({
   selector: 'app-menu-desktop',
   standalone: true,
@@ -11,5 +14,6 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './menu-desktop.component.scss',
 })
 export class MenuDesktopComponent {
+  /** menuItems */
   @Input() menuItems: MenuItem[] = [];
 }

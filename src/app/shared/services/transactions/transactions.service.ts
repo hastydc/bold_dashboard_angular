@@ -3,7 +3,10 @@ import {
   currentDate,
   transactions as defaultTransactions,
 } from '@app/api/data';
-import { PaymentBaseFilter, PaymentType } from '@app/models/paymentType.enum';
+import {
+  PaymentBaseFilter,
+  PaymentMethod,
+} from '@app/models/paymentMethod.enum';
 import { Transaction } from '@app/models/transaction.interface';
 import { TransactionData } from '@app/models/transactionData.interface';
 import { TransactionDate } from '@app/models/transactionDate.enum';
@@ -12,35 +15,56 @@ import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from '../api/api.service';
 import { finalize } from 'rxjs';
 
+/**
+ * TransactionsService
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionsService {
+  /** translateService */
   private readonly translateService: TranslateService =
     inject(TranslateService);
 
+  /** apiService */
   private readonly apiService: ApiService = inject(ApiService);
 
+  /** transactions */
   transactions: Transaction[] = [];
 
+  /** transactionData */
   private data = signal<TransactionData>({
     transactions: [],
     totalSales: 0,
     dateFilter: TransactionDate.TODAY,
   });
 
+  /**
+   * constructor
+   */
   constructor() {
     this._loadData();
   }
 
+  /**
+   * getTransactions from signal
+   * @returns {Transaction[]} response
+   */
   getTransactions(): Transaction[] {
     return this.data().transactions!;
   }
 
+  /**
+   * getTransactionData from signal
+   * @returns {TransactionData} response
+   */
   getTransactionData(): TransactionData {
     return this.data();
   }
 
+  /**
+   * _loadData from json file or ts var
+   */
   private _loadData(): void {
     this.apiService
       .getData()
@@ -61,6 +85,11 @@ export class TransactionsService {
       });
   }
 
+  /**
+   * filterByDate
+   * @param {TransactionDate} date
+   * @param {string} month
+   */
   filterByDate(date: TransactionDate, month: string = ' '): void {
     this._setData({ ...this.data(), transactions: this.transactions });
 
@@ -70,7 +99,11 @@ export class TransactionsService {
     this._filterByPaymentMethods(methods);
   }
 
-  filterByPayment(methods: PaymentType[]): void {
+  /**
+   * filterByPayment
+   * @param {PaymentMethod[]} methods
+   */
+  filterByPayment(methods: PaymentMethod[]): void {
     this._setData({ ...this.data(), transactions: this.transactions });
 
     const date = this._getDate();
@@ -80,10 +113,19 @@ export class TransactionsService {
     this._filterByDate(date, month);
   }
 
+  /**
+   * _setData set transaction data in signal
+   * @param {TransactionData} data
+   */
   private _setData(data: TransactionData): void {
     this.data.update(() => data);
   }
 
+  /**
+   * _filterByDate
+   * @param {TransactionDate} date
+   * @param {string} month
+   */
   private _filterByDate(date: TransactionDate, month: string = ' '): void {
     const monthName = this.translateService.instant(month);
     this._setData({ ...this.data(), dateFilter: date, monthName });
@@ -107,6 +149,9 @@ export class TransactionsService {
     this._setTotal();
   }
 
+  /**
+   * _filterByToday
+   */
   private _filterByToday(): void {
     const list = this.data().transactions;
 
@@ -121,6 +166,9 @@ export class TransactionsService {
     });
   }
 
+  /**
+   * _filterByWeek
+   */
   private _filterByWeek(): void {
     const list = this.data().transactions;
 
@@ -137,6 +185,9 @@ export class TransactionsService {
     });
   }
 
+  /**
+   * _fulterByMonth
+   */
   private _filterByMonth(): void {
     const list = this.data().transactions;
 
@@ -151,16 +202,20 @@ export class TransactionsService {
     });
   }
 
-  private _filterByPaymentMethods(methods: PaymentType[]): void {
+  /**
+   * _filterByPaymentMethods
+   * @param {PaymentMethod[]} methods
+   */
+  private _filterByPaymentMethods(methods: PaymentMethod[]): void {
     const list = this.data().transactions;
-    const result = list.filter(({ paymentType }: Transaction) =>
-      methods.includes(paymentType)
+    const result = list.filter(({ paymentMethod }: Transaction) =>
+      methods.includes(paymentMethod)
     );
 
     this._setData({
       ...this.data(),
       transactions: result,
-      paymentTypes: methods,
+      paymentMethods: methods,
     });
 
     localStorage.setItem(
@@ -170,6 +225,9 @@ export class TransactionsService {
     this._setTotal();
   }
 
+  /**
+   * _setTotal
+   */
   private _setTotal(): void {
     const list = this.data().transactions;
     const totalSales = list.reduce(
@@ -183,19 +241,31 @@ export class TransactionsService {
     });
   }
 
-  private _getPaymentMethods() {
+  /**
+   * _getPaymentMethods
+   * @returns {string[]} response
+   */
+  private _getPaymentMethods(): PaymentMethod[] {
     return JSON.parse(
       localStorage.getItem(TransactionKey.PAYMENT_METHODS) ??
-        `["${PaymentType.DATAPHONE}","${PaymentType.LINK}","${PaymentBaseFilter.ALL}"]`
+        `["${PaymentMethod.DATAPHONE}","${PaymentMethod.LINK}","${PaymentBaseFilter.ALL}"]`
     );
   }
 
-  private _getDate() {
+  /**
+   * _getDate
+   * @returns {string} response
+   */
+  private _getDate(): TransactionDate {
     return (localStorage.getItem(TransactionKey.DATE) ??
       TransactionDate.TODAY) as TransactionDate;
   }
 
-  private _getMonth() {
+  /**
+   * _getMonth
+   * @returns {string} response
+   */
+  private _getMonth(): string {
     return localStorage.getItem(TransactionKey.MONTH) ?? ' ';
   }
 }

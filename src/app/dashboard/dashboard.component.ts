@@ -6,6 +6,9 @@ import { PaymentMethodFilterComponent } from '@app/shared/components/payment-met
 import { TableComponent } from '@app/shared/components/table/table.component';
 import { TransactionsService } from '@app/shared/services/transactions/transactions.service';
 
+/**
+ * DashboardComponent
+ */
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -19,10 +22,18 @@ import { TransactionsService } from '@app/shared/services/transactions/transacti
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
+  /** transactionsService */
   private readonly transactionsService = inject(TransactionsService);
+
+  /** transactionData */
   transactionData!: TransactionData;
+
+  /** monthName */
   monthName: string = '';
 
+  /**
+   * constructor
+   */
   constructor() {
     effect(() => {
       this.transactionData = this.transactionsService.getTransactionData();

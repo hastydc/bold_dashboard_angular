@@ -3,6 +3,9 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { TranslateModule } from '@ngx-translate/core';
 
+/**
+ * LayoutComponent
+ */
 @Component({
   selector: 'app-layout',
   standalone: true,

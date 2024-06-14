@@ -1,4 +1,4 @@
-import { PaymentType } from '@app/models/paymentType.enum';
+import { PaymentMethod } from '@app/models/paymentMethod.enum';
 import { TransactionIconPipe } from './transaction-icon.pipe';
 
 describe('TransactionIconPipe', () => {
@@ -9,7 +9,7 @@ describe('TransactionIconPipe', () => {
 
   it('transform', () => {
     const pipe = new TransactionIconPipe();
-    const response = pipe.transform(PaymentType.LINK);
+    const response = pipe.transform(PaymentMethod.LINK);
 
     expect(response).toEqual('./assets/icons/icon-chain.svg');
   });
