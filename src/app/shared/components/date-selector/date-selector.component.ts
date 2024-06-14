@@ -6,6 +6,9 @@ import { TransactionDate } from '@app/models/transactionDate.enum';
 import { TransactionsService } from '@app/shared/services/transactions/transactions.service';
 import { TranslateModule } from '@ngx-translate/core';
 
+/**
+ * DateSelectorComponent
+ */
 @Component({
   selector: 'app-date-selector',
   standalone: true,
@@ -14,17 +17,22 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './date-selector.component.scss',
 })
 export class DateSelectorComponent {
+  /** transactionData */
   @Input() transactionData!: TransactionData;
 
+  /** transactionsService */
   private readonly transactionsService: TransactionsService =
     inject(TransactionsService);
 
+  /** dateOption */
   dateOption = TransactionDate;
 
+  /** monthName */
   monthName: string = new Date(currentDate).toLocaleString('default', {
     month: 'long',
   });
 
+  /** options */
   options = [
     {
       value: TransactionDate.TODAY,
@@ -38,7 +46,11 @@ export class DateSelectorComponent {
     },
   ];
 
-  filterByDate(date: TransactionDate) {
+  /**
+   * filterByDate
+   * @param {TransactionData} date
+   */
+  filterByDate(date: TransactionDate): void {
     this.transactionsService.filterByDate(date, this.monthName);
   }
 }

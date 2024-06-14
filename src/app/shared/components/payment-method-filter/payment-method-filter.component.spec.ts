@@ -3,7 +3,10 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaymentMethodFilterComponent } from './payment-method-filter.component';
 import { TranslateModuleMock } from '@app/shared/tests/utils.mock';
 import { HttpClientModule } from '@angular/common/http';
-import { PaymentBaseFilter, PaymentType } from '@app/models/paymentType.enum';
+import {
+  PaymentBaseFilter,
+  PaymentMethod,
+} from '@app/models/paymentMethod.enum';
 
 describe('PaymentMethodFilterComponent', () => {
   let component: PaymentMethodFilterComponent;
@@ -47,8 +50,8 @@ describe('PaymentMethodFilterComponent', () => {
 
   it('onSelect', () => {
     component.onSelect({
-      value: [PaymentType.DATAPHONE],
-      option: { value: PaymentType.DATAPHONE },
+      value: [PaymentMethod.DATAPHONE],
+      option: { value: PaymentMethod.DATAPHONE },
     });
 
     expect(component.seeAll).toBeFalse();
@@ -57,7 +60,7 @@ describe('PaymentMethodFilterComponent', () => {
   it('onSelect allValue option', () => {
     component.seeAll = true;
     component.onSelect({
-      value: [PaymentType.DATAPHONE],
+      value: [PaymentMethod.DATAPHONE],
       option: { value: PaymentBaseFilter.ALL },
     });
 
@@ -67,7 +70,7 @@ describe('PaymentMethodFilterComponent', () => {
   it('onSelect allValue option and seeAll', () => {
     component.seeAll = false;
     component.onSelect({
-      value: [PaymentType.DATAPHONE],
+      value: [PaymentMethod.DATAPHONE],
       option: { value: PaymentBaseFilter.ALL },
     });
 
@@ -77,8 +80,8 @@ describe('PaymentMethodFilterComponent', () => {
   it('onSelect all options', () => {
     component.seeAll = false;
     component.onSelect({
-      value: [PaymentType.DATAPHONE, PaymentType.LINK],
-      option: { value: PaymentType.DATAPHONE },
+      value: [PaymentMethod.DATAPHONE, PaymentMethod.LINK],
+      option: { value: PaymentMethod.DATAPHONE },
     });
 
     expect(component.seeAll).toBeTrue();

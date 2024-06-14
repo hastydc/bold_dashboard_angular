@@ -8,6 +8,9 @@ import { CardNumberPipe } from '@app/shared/pipes/card-number/card-number.pipe';
 import { TransactionIconPipe } from '@app/shared/pipes/transaction-icon/transaction-icon.pipe';
 import { TranslateModule } from '@ngx-translate/core';
 
+/**
+ * TableDesktopComponent
+ */
 @Component({
   selector: 'app-table-desktop',
   standalone: true,
@@ -22,8 +25,12 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './table-desktop.component.scss',
 })
 export class TableDesktopComponent {
+  /** transactionData */
   @Input() transactionData!: TransactionData;
 
+  /** tableHeaders */
   tableHeaders = tableHeaders;
+
+  /** transactionStatus */
   transactionStatus = TransactionStatus;
 }

@@ -3,15 +3,24 @@ import { TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from '../environments/environment';
 
-export function HttpLoaderFactory(http: HttpClient) {
+/**
+ * httpLoaderFactory
+ * @param {HttpClient} http
+ * @returns {Object} response
+ */
+export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+/**
+ * provideTranslation
+ * @returns {Object} response
+ */
 export const provideTranslation = () => ({
   defaultLanguage: environment.defaultLang,
   loader: {
     provide: TranslateLoader,
-    useFactory: HttpLoaderFactory,
+    useFactory: httpLoaderFactory,
     deps: [HttpClient],
   },
 });

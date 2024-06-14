@@ -2,10 +2,16 @@ import { Component, Input, OnChanges, inject } from '@angular/core';
 import { CdkListbox, CdkOption } from '@angular/cdk/listbox';
 import { TransactionData } from '@app/models/transactionData.interface';
 import { TranslateModule } from '@ngx-translate/core';
-import { PaymentBaseFilter, PaymentType } from '@app/models/paymentType.enum';
+import {
+  PaymentBaseFilter,
+  PaymentMethod,
+} from '@app/models/paymentMethod.enum';
 import { TransactionsService } from '@app/shared/services/transactions/transactions.service';
 import { CommonModule } from '@angular/common';
 
+/**
+ * PaymentMethodFilter
+ */
 @Component({
   selector: 'app-payment-method-filter',
   standalone: true,
@@ -14,23 +20,45 @@ import { CommonModule } from '@angular/common';
   styleUrl: './payment-method-filter.component.scss',
 })
 export class PaymentMethodFilterComponent implements OnChanges {
+  /** transactionData */
   @Input() transactionData!: TransactionData;
 
+  /** transactionsService */
   private readonly transactionsService = inject(TransactionsService);
-  options = [PaymentType.DATAPHONE, PaymentType.LINK];
+
+  /** options for select list */
+  options = [PaymentMethod.DATAPHONE, PaymentMethod.LINK];
+
+  /** optionAll */
   optionAll = PaymentBaseFilter.ALL;
+
+  /** seeAll */
   seeAll: boolean = false;
+
+  /** selecteds */
   selecteds: any[] = [];
+
+  /** showList */
   showList: boolean = false;
 
+  /**
+   * ngOnChanges
+   */
   ngOnChanges(): void {
-    this.selecteds = this.transactionData?.paymentTypes ?? [];
+    this.selecteds = this.transactionData?.paymentMethods ?? [];
   }
 
+  /**
+   * toggleList
+   */
   toggleList(): void {
     this.showList = !this.showList;
   }
 
+  /**
+   * onSelectEvent
+   * @param {Object} event
+   */
   onSelect(event: any): void {
     const value = event.value.filter(
       (option: string) => option !== this.optionAll
@@ -60,6 +88,9 @@ export class PaymentMethodFilterComponent implements OnChanges {
     }
   }
 
+  /**
+   * filter
+   */
   filter(): void {
     this.transactionsService.filterByPayment(this.selecteds);
     this.showList = false;

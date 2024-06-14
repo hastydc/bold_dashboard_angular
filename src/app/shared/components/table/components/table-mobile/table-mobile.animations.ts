@@ -7,6 +7,9 @@ import {
   animate,
 } from '@angular/animations';
 
+/**
+ * animations values for table mobile component
+ */
 export const animations = [
   trigger('collapse', [
     state(

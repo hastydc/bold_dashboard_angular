@@ -7,6 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { provideTranslation } from './app.i18n';
 
+/**
+ * appConfig
+ */
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimationsAsync(),
