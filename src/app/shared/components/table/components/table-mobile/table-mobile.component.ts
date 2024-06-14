@@ -39,10 +39,7 @@ export class TableMobileComponent implements OnChanges {
    * ngOnChanges
    */
   ngOnChanges(): void {
-    if (
-      !Object.keys(this.seeMore).length &&
-      this.transactionData?.transactions
-    ) {
+    if (this.transactionData?.transactions) {
       this.initSeeMore();
     }
   }
