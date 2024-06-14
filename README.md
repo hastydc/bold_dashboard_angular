@@ -42,4 +42,4 @@ Run `npm run prettier` to format files in src folder.
 
 ## Live demo
 
-Live demo here -> -> -> [https://efrainmancilla.pantera-studio.com/bold-bashboard] or []
+Live demo here -> -> -> [https://efrainmancilla.pantera-studio.com/bold-dashboard] or []
