@@ -22,7 +22,7 @@ const transactions: Transaction[] = [
     paymentMethod: PaymentMethod.DATAPHONE,
     createdAt: 1718287180315,
     cardNumber: 5555555555554444,
-    amount: 25000,
+    amount: 25001,
     deduction: 1500,
   },
   {
